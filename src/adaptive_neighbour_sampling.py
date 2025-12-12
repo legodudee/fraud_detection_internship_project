@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class AdaptiveNeighbourSampling(nn.Module):
-    def __init__(self, similarity_threshold):
+    def __init__(self, sample_size):
         """
         Adaptive Neibour Sampling Module
         This module implement a sampling strategy from ASA-GNN that:
@@ -11,7 +11,7 @@ class AdaptiveNeighbourSampling(nn.Module):
         2. Over-sample for fraudulent node to enrich information
         """
         super(AdaptiveNeighbourSampling, self).__init__()
-        self.similarity_threshold = similarity_threshold 
+        self.sample_size = sample_size # Number of neighbors to sample;
 
     
     def cosine_similarity(self, target_node, neighbor_nodes):
